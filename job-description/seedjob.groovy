@@ -1,4 +1,4 @@
-pipelineJob('python_dsl_job_example') {
+pipelineJob('HelloWorldJob') {
     definition {
         cps {
             script(readFileFromWorkspace('jobdsl/job1.groovy'))
