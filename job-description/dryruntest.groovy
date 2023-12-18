@@ -5,7 +5,7 @@ pipelineJob('MyDryrunPipeline') {
         sandbox()
     }
   }
-  context.parameters {
-    booleanParam(name: 'dryRun', defaultValue: true, description: 'Running pipeline in dry mode')
+  parameters {
+    booleanParam(name: 'dryRun', defaultValue: false, description: 'Running pipeline in dry mode')
   }
 }
