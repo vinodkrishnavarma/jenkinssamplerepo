@@ -1,7 +1,7 @@
 pipelineJob('MyDryrunPipeline') {
   definition {
     cps {
-        script(readFileFromWorkspace('jobdsl/job1.groovy'))
+        script(readFileFromWorkspace('jobdsl/job2.groovy'))
         sandbox()
     }
   }
