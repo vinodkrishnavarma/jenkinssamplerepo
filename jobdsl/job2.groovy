@@ -4,7 +4,7 @@ pipeline {
 stage('test job') {
 
             steps {
-                step {
+                step ('Run') {
                     if (params.dryRun) {
                     echo 'Dry run selected, skipping actual execution.'
                     } else {
