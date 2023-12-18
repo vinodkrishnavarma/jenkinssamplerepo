@@ -7,6 +7,6 @@ pipelineJob('MyDryrunPipeline') {
   }
   parameters {
             Map paramMap = [name: 'dryRun', defaultValue: false, description: 'Running pipeline in dry mode?']
-            context.booleanParam(paramMap.name, paramMap.defaultValue, paramMap.description)
+            booleanParam(paramMap.name, paramMap.defaultValue, paramMap.description)
   }
 }
