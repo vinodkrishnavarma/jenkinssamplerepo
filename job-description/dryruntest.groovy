@@ -6,6 +6,9 @@ pipelineJob('MyDryrunPipeline') {
     }
   }
   parameters {
-    booleanParam(name: 'dryRun', defaultValue: false, description: 'Running pipeline in dry mode')
+    booleanParam(name: 'dryRun', 
+                 defaultValue: false, 
+                 description: 'Running pipeline in dry mode'
+                )
   }
 }
