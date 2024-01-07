@@ -18,8 +18,7 @@ pipelineJob('scale-pods') {
             description('select your choice')
             choiceType('RADIO')
             groovyScript {
-               script("
-                  if(choice1.equals("aaa")){
+               script("if(choice1.equals("aaa")){
                       return ['a', 'b']
                   } else {
                       return ['aaaaaa','fffffff']
