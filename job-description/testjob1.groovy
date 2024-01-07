@@ -5,34 +5,29 @@ pipelineJob('scale-pods') {
         sandbox()
     }
   }
-properties([
-    parameters([
-        choice(
-            name: 'ENV',
-            choices: [
-                'dev',
-                'prod'
-            ]
-        ),
-        [$class: 'ChoiceParameter',
-            choiceType: 'PT_RADIO',
-            filterLength: 1,
-            filterable: false,
-            name: 'CHOICES',
-            script: [
-                $class: 'GroovyScript',
-                fallbackScript: [
-                    classpath: [],
-                    sandbox: false,
-                    script: 'return ["Check Jenkins ScriptApproval page"]'
-                ],
-                script: [
-                    classpath: [],
-                    sandbox: false,
-                    script: 'return ["One","Two:selected"]'
-                ]
-            ]
-        ]
-    ])
-])
+    parameters {
+        activeChoiceParam('choice1') {
+            description('select your choice')
+            choiceType('RADIO')
+            groovyScript {
+              script("return['aaa','bbb']")
+              fallbackScript('return ["error"]')
+            }
+        }
+        activeChoiceReactiveParam('choice2') {
+            description('select your choice')
+            choiceType('RADIO')
+            groovyScript {
+               script("
+                  if(choice1.equals("aaa")){
+                      return ['a', 'b']
+                  } else {
+                      return ['aaaaaa','fffffff']
+                  }"
+               )
+               fallbackScript('return ["error"]')
+            }
+           referencedParameter('choice1')
+         }
+    }
 }
