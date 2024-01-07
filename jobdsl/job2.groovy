@@ -1,15 +1,14 @@
 pipeline {
     agent { label 'built-in' }
     stages {
-stage('test job') {
-
+        stage('test job') {
             steps {
-                step ('Run') {
+                script {  // Use 'script' to enclose conditional logic
                     if (params.dryRun) {
-                    sh '''echo 'Dry run selected, skipping actual execution.''''
+                        sh '''echo 'Dry run selected, skipping actual execution.''''
                     } else {
-                    // Your normal pipeline steps go here...
-                     sh ''' echo 'Dry run Notselected, .. actual execution.' '''
+                        // Normal pipeline steps go here
+                        sh '''echo 'Dry run not selected, proceeding with actual execution.''''
                     }
                 }
             }
