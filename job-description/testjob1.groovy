@@ -1,11 +1,12 @@
 pipelineJob('testjob1') {
   definition {
     cps {
-        script(readFileFromWorkspace('jobdsl/testjob1.groovy'))
+        script(readFileFromWorkspace('jobdsl/job3.groovy'))
         sandbox()
     }
   }
   parameters {
-    choiceParam('OPTION', ['option 1 (default)', 'option 2', 'option 3'])
+    choiceParam('OPTION', ['DryRun (default)', 'Scaledown', 'Scaleup'])
+    choiceParam('OPTION', ['No', 'type'])
   }
 }
