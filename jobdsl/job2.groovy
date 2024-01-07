@@ -5,9 +5,9 @@ pipeline {
             steps {
                 script {
                     if (params.dryRun) {
-                        sh '''echo 'Dry run selected, skipping actual execution.' '''  // Removed extra triple quote
+                        echo 'Dry run selected, skipping actual execution.'
                     } else {
-                        sh '''echo 'Dry run not selected, proceeding with actual execution.' '''
+                        echo 'Dry run not selected, proceeding with actual execution.'
                     }
                 }
             }
