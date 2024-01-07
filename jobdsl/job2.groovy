@@ -3,12 +3,11 @@ pipeline {
     stages {
         stage('test job') {
             steps {
-                script {  // Use 'script' to enclose conditional logic
+                script {
                     if (params.dryRun) {
-                        sh '''echo 'Dry run selected, skipping actual execution.''''
+                        sh '''echo 'Dry run selected, skipping actual execution.' '''  // Removed extra triple quote
                     } else {
-                        // Normal pipeline steps go here
-                        sh '''echo 'Dry run not selected, proceeding with actual execution.''''
+                        sh '''echo 'Dry run not selected, proceeding with actual execution.' '''
                     }
                 }
             }
