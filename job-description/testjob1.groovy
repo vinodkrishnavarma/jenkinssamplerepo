@@ -6,9 +6,14 @@ pipelineJob('scale-pods') {
     }
   }
     parameters {
-        // choice(choices: ['Scale Up', 'Scale Down'], description: 'Select scaling action', name: 'scalingAction')
-        // choice(choices: ['cluster-one', 'cluster-two'], description: 'Select target Kubernetes cluster', name: 'clusterName')
-        stringParam(description: 'Name of the deployment to scale', name: 'deploymentName')
-        stringParam(defaultValue: '1', description: 'Desired number of replicas', name: 'replicaCount')
+        activeChoiceParam('CHOICE-1') {
+            description('Allows user choose from multiple choices')
+            filterable()
+            choiceType('SINGLE_SELECT')
+            groovyScript {
+                script('["choice1", "choice2"]')
+                fallbackScript('"fallback choice"')
+            }
+        }
     }
 }
