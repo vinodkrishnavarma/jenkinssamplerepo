@@ -6,11 +6,11 @@ pipelineJob('scale-pods') {
     }
   }
     parameters {
-        activeChoiceParam('CHOICE-1') {
+        activeChoiceParam('Env') {
             description('Allows user choose from multiple choices')
             choiceType('SINGLE_SELECT')
             groovyScript {
-                script('["choice1", "choice2"]')
+                script('["Dev-DR", "Prod-DR"]')
                 fallbackScript('"fallback choice"')
             }
 
