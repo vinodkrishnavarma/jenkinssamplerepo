@@ -17,7 +17,6 @@ pipelineJob('scale-pods') {
         }
         activeChoiceReactiveParam('Env') {
             description('Allows user choose from multiple choices')
-            filterable()
             choiceType('SINGLE_SELECT')
             groovyScript {
                 script('["SelectAny", "Dev-DR", "Prod-DR"]')
@@ -27,7 +26,6 @@ pipelineJob('scale-pods') {
         }
         activeChoiceReactiveParam('Cluster') {
             description('Select FE or BE cluster')
-            filterable()
             choiceType('SINGLE_SELECT')
             groovyScript {
                 script('["SelectAny", "FE", "BE"]')
