@@ -14,7 +14,6 @@ pipelineJob('scale-pods') {
                 script('["choice1", "choice2"]')
                 sandbox()
                 fallbackScript('"fallback choice"')
-                sandbox()
             }
         }
     }
