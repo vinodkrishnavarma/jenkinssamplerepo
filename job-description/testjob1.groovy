@@ -12,7 +12,6 @@ pipelineJob('scale-pods') {
             groovyScript {
                 script('["choice1", "choice2"]')
                 fallbackScript('"fallback choice"')
-                any()
             }
 
         }
