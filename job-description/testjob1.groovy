@@ -12,7 +12,9 @@ pipelineJob('scale-pods') {
             choiceType('SINGLE_SELECT')
             groovyScript {
                 script('["choice1", "choice2"]')
+                sandbox()
                 fallbackScript('"fallback choice"')
+                sandbox()
             }
         }
     }
