@@ -6,27 +6,14 @@ pipelineJob('scale-pods') {
     }
   }
     parameters {
-        activeChoiceParam('choice1') {
-            description('select your choice')
-            choiceType('RADIO')
+        activeChoiceParam('CHOICE-1') {
+            description('Allows user choose from multiple choices')
+            filterable()
+            choiceType('SINGLE_SELECT')
             groovyScript {
-              script("return['aaa','bbb']")
-              fallbackScript('return ["error"]')
+                script('["choice1", "choice2"]')
+                fallbackScript('"fallback choice"')
             }
         }
-        activeChoiceReactiveParam('choice2') {
-            description('select your choice')
-            choiceType('RADIO')
-            groovyScript {
-               script("if(choice1.equals("aaa")){
-                      return ['a', 'b']
-                  } else {
-                      return ['aaaaaa','fffffff']
-                  }"
-               )
-               fallbackScript('return ["error"]')
-            }
-           referencedParameter('choice1')
-         }
     }
 }
