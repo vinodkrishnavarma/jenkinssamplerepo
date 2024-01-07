@@ -6,14 +6,37 @@ pipelineJob('scale-pods') {
     }
   }
     parameters {
-        activeChoiceParam('Env') {
-            description('Allows user choose from multiple choices')
+        activeChoiceParam('Scaling') {
+            description('Select the option to scaleup or scale down cluster')
             choiceType('SINGLE_SELECT')
             groovyScript {
-                script('["Dev-DR", "Prod-DR"]')
-                fallbackScript('"fallback choice"')
+                script('["SelectAny", "ScaleUp", "ScaleDown"]')
+                fallbackScript('"SelectAny"')
             }
 
         }
+        activeChoiceReactiveParam('Env') {
+            description('Allows user choose from multiple choices')
+            filterable()
+            choiceType('SINGLE_SELECT')
+            groovyScript {
+                script('["SelectAny", "Dev-DR", "Prod-DR"]')
+                fallbackScript('"SelectAny"')
+            }
+            referencedParameter('Scaling')
+        }
+        activeChoiceReactiveParam('Cluster') {
+            description('Select FE or BE cluster')
+            filterable()
+            choiceType('SINGLE_SELECT')
+            groovyScript {
+                script('["SelectAny", "FE", "BE"]')
+                fallbackScript('"SelectAny"')
+            }
+            referencedParameter('Env')
+            referencedParameter('Scaling')
+        }
+
+
     }
 }
