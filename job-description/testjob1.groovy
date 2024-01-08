@@ -28,7 +28,9 @@ pipelineJob('scale-pods') {
             description('Select FE or BE cluster')
             choiceType('SINGLE_SELECT')
             groovyScript {
-                script('["SelectAny", "FE", "BE"]')
+                script('''
+                return ["SelectAny", "FE", "BE"]
+                ''')
                 fallbackScript('"SelectAny"')
             }
             referencedParameter('Env')
